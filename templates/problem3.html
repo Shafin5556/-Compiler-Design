@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Problem 3 IDE{% endblock %}
+{% block content %}
+<div class="d-flex" style="height: 75vh;">
+    <!-- Input Section -->
+    <div class="col-md-6 p-3 border-end bg-light d-flex flex-column">
+        <h4>Input</h4>
+        <form method="POST" class="d-flex flex-column h-100">
+            <textarea name="input_text" class="form-control flex-grow-1 mb-3" placeholder="Enter your text here...">{{ request.form.get('input_text', '') }}</textarea>
+            <div class="d-flex justify-content-end">
+                <button type="submit" name="action" value="run" class="btn btn-success me-2">Run</button>
+                <button type="submit" name="action" value="pause" class="btn btn-warning">Pause</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Output Section -->
+    <div class="col-md-6 p-3 bg-white d-flex flex-column">
+        <h4>Output</h4>
+        <div class="flex-grow-1 border p-3 overflow-auto bg-light">
+            {% if output %}
+            <pre>{{ output }}</pre>
+            {% else %}
+            <p class="text-muted">Output will appear here...</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
